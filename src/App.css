@@ -1,42 +1,66 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #111, #000);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.name {
+  display: flex;
+  gap: 22px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.space {
+  width: 24px;
 }
 
-.card {
-  padding: 2em;
+.letter {
+  display: grid;
+  grid-template-columns: repeat(5, 14px);
+  grid-template-rows: repeat(5, 14px);
+  gap: 4px;
 }
 
-.read-the-docs {
-  color: #888;
+.pixel {
+  width: 14px;
+  height: 14px;
+  background: #050505;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+}
+
+.pixel.on {
+  background: #00f6ff;
+  box-shadow:
+    0 0 6px #00f6ff,
+    0 0 12px #00f6ff,
+    0 0 24px #00f6ff;
+  animation: wave 3s infinite ease-in-out, rainbow 5s linear infinite;
+}
+
+/* 🌊 Animation vague */
+@keyframes wave {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+  100% { opacity: 0.3; transform: scale(0.8); }
+}
+
+/* 🌈 Animation couleurs rainbow */
+@keyframes rainbow {
+  0% { background: #ff3cac; box-shadow: 0 0 12px #ff3cac; }
+  25% { background: #ffe53b; box-shadow: 0 0 12px #ffe53b; }
+  50% { background: #00f6ff; box-shadow: 0 0 12px #00f6ff; }
+  75% { background: #4cff00; box-shadow: 0 0 12px #4cff00; }
+  100% { background: #ff3cac; box-shadow: 0 0 12px #ff3cac; }
+}
+
+/* 🖱️ Hover */
+.letter:hover .pixel.on {
+  transform: scale(1.35);
+  filter: brightness(1.4);
 }
